@@ -19,4 +19,6 @@ Gem::Specification.new do |gem|
 
   gem.add_dependency('rails')
   gem.add_dependency('whenever')
+
+  gem.add_development_dependency('rspec')
 end

@@ -1,10 +1,18 @@
-class Notifier
+class Sidekiq::Nag::Notifier
   def initialize
-    campfire = Tinder::Campfire.new 'mbs8', :token => '3c2164cb10ad4bc14985b8c4f78191a0eee614b8'
-    @room = campfire.find_room_by_name('LZ')
+    campfire = Tinder::Campfire.new(config.subdomain, :token => config.token)
+    @room = campfire.find_room_by_name(config.room)
   end
 
-  def speak(message = "")
-    @room.speak(message)
+  def nag_about_queue(queue, timeout)
+    #room.speak(":no_good: excuse me, the '#{queue}' queue has been chilling for at least #{timeout} minutes...")
+    puts (":no_good: excuse me, the '#{queue}' queue has been chilling for at least #{timeout} minutes...")
   end
+
+  private
+    attr_reader :room
+
+    def config
+      @config ||= Sidekiq::Nag::Config.new
+    end
 end
