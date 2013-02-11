@@ -1,7 +1,7 @@
-require "sidekiq-nag/version"
-
 module Sidekiq
   module Nag
-    # Your code goes here...
+    require "sidekiq-nag/version"
+    require "sidekiq-nag/notifier"
+    require "sidekiq-nag/railtie" if defined?(Rails)
   end
 end
