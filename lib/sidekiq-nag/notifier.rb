@@ -5,8 +5,7 @@ class Sidekiq::Nag::Notifier
   end
 
   def nag_about_queue(queue, timeout)
-    #room.speak(":no_good: excuse me, the '#{queue}' queue has been chilling for at least #{timeout} minutes...")
-    puts (":no_good: excuse me, the '#{queue}' queue has been chilling for at least #{timeout} minutes...")
+    room.speak(":no_good: excuse me, the '#{queue}' queue has been chilling for at least #{timeout} minutes...")
   end
 
   private
