@@ -1,6 +1,6 @@
 # Sidekiq::Nag
 
-TODO: Write a gem description
+A Sidekiq extention that posts a message in Campfire when queues stop moving. A great way to prempt support calls and get to know the status quo :)
 
 ## Installation
 
@@ -16,9 +16,23 @@ Or install it yourself as:
 
     $ gem install sidekiq-nag
 
-## Usage
+## Configuration
 
-TODO: Write usage instructions here
+Add a `sidekiq-nag.yml` file to the `config/` directory that looks like this:
+
+    queues:
+      foo_app_critical_queue: 10
+      foo_app_low_priority_queue: 30
+
+    campfire:
+      token: NoaTOEX23...
+      subdomain: foo3
+      room: TheZone
+
+The timeout entered next to each queue name is specified in minutes :)
+
+Nag provides you with a rake task that checks the Sidekiq queues and send messages to Campfire (if necessary).
+The final step in getting it Nag to work is to setup a cron that runs `rake sidekiq-nag:nag` at intervals smaller than the timeouts you've specified in the config file. We run it once every 2 minutes :)
 
 ## Contributing
 
