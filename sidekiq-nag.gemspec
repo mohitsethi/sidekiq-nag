@@ -8,8 +8,8 @@ Gem::Specification.new do |gem|
   gem.version       = Sidekiq::Nag::VERSION
   gem.authors       = ["Gary Greyling"]
   gem.email         = ["greyling.gary@gmail.com"]
-  gem.description   = %q{TODO: Write a gem description}
-  gem.summary       = %q{TODO: Write a gem summary}
+  gem.description   = %q{A Sidekiq extension that will notify you of queues that take too long to process}
+  gem.summary       = %q{Campfire notification of stationary Sidekiq queues}
   gem.homepage      = ""
 
   gem.files         = `git ls-files`.split($/)
