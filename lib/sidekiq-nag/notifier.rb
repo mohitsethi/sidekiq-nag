@@ -1,4 +1,6 @@
 class Sidekiq::Nag::Notifier
+  require 'tinder'
+
   def initialize
     campfire = Tinder::Campfire.new(config.subdomain, :token => config.token)
     @room = campfire.find_room_by_name(config.room)
