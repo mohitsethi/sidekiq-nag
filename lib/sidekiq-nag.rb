@@ -4,6 +4,8 @@ module Sidekiq
     require "sidekiq-nag/config"
     require "sidekiq-nag/notifier"
     require "sidekiq-nag/nagger"
+    require "sidekiq-nag/notifiers/campfire"
+    require "sidekiq-nag/notifiers/hipchat"
     require "sidekiq-nag/railtie" if defined?(Rails)
   end
 end

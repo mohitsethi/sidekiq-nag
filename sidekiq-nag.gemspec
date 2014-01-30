@@ -18,4 +18,5 @@ Gem::Specification.new do |gem|
   gem.require_paths = ["lib"]
 
   gem.add_dependency('tinder')
+  gem.add_dependency('hipchat-api')
 end
