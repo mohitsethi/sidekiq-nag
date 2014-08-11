@@ -1,11 +1,17 @@
 # Sidekiq::Nag
 
-A Sidekiq extention that posts messages in Campfire when queues move slowly. A great way to prempt support calls and keep things flowing :)
+A Sidekiq extention that posts messages in a chatroom (so far, Campfire and
+HipChat are supported) when queues move slowly. A great way to pre-empt support
+calls and keep things flowing.
 
 ## How it works
 
-Sidekiq-nag adds middleware to Sidekiq that timestamps jobs as they enter the queue. When the nag rake task is run it inspects the oldest job in the queue and checks whether its been waiting in the queue for longer than the number of minutes you've configured as the timeout.
-If the job has been in the queue for longer than the timeout then Sidekiq-nag posts a message in Campfire letting you know that things aren't as great as you'd like them to be :)
+Sidekiq-nag adds middleware to Sidekiq that timestamps jobs as they enter the
+queue. When the nag rake task is run it inspects the oldest job in the queue
+and checks whether its been waiting in the queue for longer than the number of
+minutes you've configured as the timeout. If the job has been in the queue for
+longer than the timeout then Sidekiq-nag posts a message in the chatroom
+letting you know that things aren't as great as you'd like them to be.
 
 ## Installation
 

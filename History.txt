@@ -1,3 +1,6 @@
+0.0.6
+* Added support for Sidekiq 3 (extra parameter in middleware call)
+
 0.0.5
 * Add Hipchat notification
 
