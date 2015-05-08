@@ -50,7 +50,7 @@ Add a `sidekiq-nag.yml` file to the `config/` directory that looks like this:
 
     slack:
       webook: http://yoursubdomain.slack...
-      channel: devops
+      channel: #devops
       user: fooapp
 
 ## Testing and implementation
