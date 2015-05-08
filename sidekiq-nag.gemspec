@@ -19,4 +19,5 @@ Gem::Specification.new do |gem|
 
   gem.add_dependency('tinder')
   gem.add_dependency('hipchat-api')
+  gem.add_dependency('slack-notifier')
 end

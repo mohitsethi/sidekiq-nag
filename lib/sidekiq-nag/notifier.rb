@@ -2,7 +2,9 @@ class Sidekiq::Nag::Notifier
   attr_reader :notifier
 
   def initialize
-    @notifier = config.uses_campfire? ? Sidekiq::Nag::Notifiers::Campfire.new : Sidekiq::Nag::Notifiers::Hipchat.new
+    return @notifier = Sidekiq::Nag::Notifiers::Campfire.new if config.uses_campfire?
+    return @notifier = Sidekiq::Nag::Notifiers::Slack.new if config.uses_slack?
+    @notifier = Sidekiq::Nag::Notifiers::Hipchat.new
   end
 
   def nag_about_queue(queue, timeout)

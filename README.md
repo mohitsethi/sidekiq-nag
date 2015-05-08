@@ -39,11 +39,31 @@ Add a `sidekiq-nag.yml` file to the `config/` directory that looks like this:
       token: NoaTOEX23...
       subdomain: foo3
       room: TheZone
+
     # or
 
     hipchat:
       token: NoaT0EX23....
       room: TheZone
+
+    # or
+
+    slack:
+      webook: http://yoursubdomain.slack...
+      channel: devops
+      user: fooapp
+
+## Testing and implementation
+
+Setup a cron to call
+
+    rake sidekiq-nag:nag
+
+To test integration call
+
+  rake sidekiq-nag:nag_test
+
+
 
 The timeout entered next to each queue name is specified in minutes.
 

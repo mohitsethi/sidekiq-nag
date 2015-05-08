@@ -14,6 +14,10 @@ class Sidekiq::Nag::Nagger
     end
   end
 
+  def test_nag
+    Sidekiq::Nag::Notifier.new.nag_about_queue('fake_queue', 1000)
+  end
+
   class NaggableQueue
     def initialize(connection, queue_name)
       @conn = connection

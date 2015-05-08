@@ -1,15 +1,28 @@
 module Sidekiq::Nag
   class Config
-    attr_reader :queues, :campfire, :hipchat
+    attr_reader :queues, :campfire, :hipchat, :slack
 
     def initialize
       @queues = raw_yaml['queues']
       @campfire = raw_yaml['campfire']
       @hipchat = raw_yaml['hipchat']
+      @slack = raw_yaml['slack']
     end
 
     def room
       notifier['room']
+    end
+
+    def webhook
+      notifier['webhook']
+    end
+
+    def channel
+      notifier['channel']
+    end
+
+    def user
+      notifier['user']
     end
 
     def token
@@ -24,9 +37,15 @@ module Sidekiq::Nag
       raw_yaml.has_key?('campfire')
     end
 
+    def uses_slack?
+      raw_yaml.has_key?('slack')
+    end
+
     private
       def notifier
-        uses_campfire? ? campfire : hipchat
+        return campfire if uses_campfire?
+        return slack if uses_slack?
+        return hipchat
       end
 
 

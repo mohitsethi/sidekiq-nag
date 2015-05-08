@@ -3,4 +3,9 @@ namespace :'sidekiq-nag' do
   task :nag => :environment do
     Sidekiq::Nag::Nagger.new.nag
   end
+
+  desc "Tests the nag message integration"
+  task :nag_test => :environment do
+    Sidekiq::Nag::Nagger.new.test_nag
+  end
 end
