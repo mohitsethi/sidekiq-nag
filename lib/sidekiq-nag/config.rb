@@ -1,3 +1,5 @@
+require "erb"
+
 module Sidekiq::Nag
   class Config
     attr_reader :queues, :campfire, :hipchat, :slack
@@ -50,7 +52,11 @@ module Sidekiq::Nag
 
 
       def raw_yaml
-        @raw_yaml ||= YAML::load_file(Rails.root + 'config/sidekiq-nag.yml')
+        @raw_yaml ||= YAML::load(ERB.new(File.read(config_path)).result)
+      end
+
+      def config_path
+        File.join(Rails.root, "config", "sidekiq-nag.yml")
       end
   end
 end
